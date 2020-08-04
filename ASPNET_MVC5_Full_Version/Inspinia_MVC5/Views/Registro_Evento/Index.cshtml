@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Inspinia_MVC5.Registro_Evento>
+
+@{
+    ViewBag.Title = "Registro de Evento";
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Registro de Evento</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Lista de Registro de Evento</h5>
+                    <div class="ibox-tools">
+                        @Html.ActionLink("Nuevo Registro de Evento", "Create", null, new { @class = "btn btn-primary btn-xs" })
+                    </div>
+                </div>
+                <div class="ibox-content">
+                 
+
+                    <table id="example" class="display responsive nowrap" style="width:100%;">
+                        <thead>
+                            <tr role="row">
+
+                                <th class="sorting_asc">
+                                    Fecha de Reporte
+                                    @*@Html.DisplayNameFor(model => model.FechaReporte)*@
+                                </th>
+                                <th>
+                                    Tipo de Accidente
+                                    @*@Html.DisplayNameFor(model => model.Tipo_Involucrado.Descripcion)*@
+                                </th>
+                                <th>
+                                    Zona
+                                    @*@Html.DisplayNameFor(model => model.Zona.Descripcion)*@
+                                </th>
+
+                                <th>
+                                     Numero de caso
+                                    @*@Html.DisplayNameFor(model => model.Numero_Caso)*@
+                                </th>
+                                <th>
+                                    Comandancia
+                                    @*@Html.DisplayNameFor(model => model.Comandancia.Descripcion)*@
+                                </th>
+                                <th>
+                                    Municipio
+                                    @*@Html.DisplayNameFor(model => model.Municipio.Descripcion)*@
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Direccion)
+                                </th>
+                                <th>
+                                    Regional
+                                    @*@Html.DisplayNameFor(model => model.Regional.Descripcion)*@
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Usuario.Nombre)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Comentario)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaReporte)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tipo_Involucrado.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Zona.Descripcion)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Numero_Caso)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comandancia.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Municipio.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Direccion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Regional.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comentario)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Detalles", "Details", new { id = item.Registro_EventoId }, new { @class = "btn btn-primary btn-sm" })
+                                        @Html.ActionLink("Editar", "Edit", new { id = item.Registro_EventoId }, new { @class = "btn btn-white btn-sm" })
+                                        @Html.ActionLink("Borrar", "Delete", new { id = item.Registro_EventoId }, new { @class = "btn btn-white btn-sm" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles {
+    @*@Styles.Render("~/Content/dataTablesResponsive/dataTablesResponsiveStyles")*@
+    <link href="~/Content/dataTableResponsive/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/dataTableResponsive/responsive.dataTables.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @*@Scripts.Render("~/Content/dataTablesResponsive")*@
+    @*<script src="~/Content/dataTableResponsive/jquery-3.3.1.js"></script>*@
+    <script src="~/Content/dataTableResponsive/jquery.dataTables.min.js"></script>
+    <script src="~/Content/dataTableResponsive/dataTables.responsive.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#example').DataTable({
+                "autoWidth": true,
+                autoFill: true
+            });
+
+            //$('.dataTables-example').DataTable({
+            //    pageLength: 10,
+            //    dom: '<"html5buttons"B>lTfgitp',
+            //    language: {
+            //        "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+            //    },
+            //    buttons: [
+            //        { extend: 'copy' },
+            //        { extend: 'csv' },
+            //        { extend: 'excel', title: 'ExampleFile' },
+            //        { extend: 'pdf', title: 'ExampleFile' },
+
+            //        {
+            //            extend: 'print',
+            //            customize: function (win) {
+            //                $(win.document.body).addClass('white-bg');
+            //                $(win.document.body).css('font-size', '10px');
+
+            //                $(win.document.body).find('table')
+            //                    .addClass('compact')
+            //                    .css('font-size', 'inherit');
+            //            }
+            //        }
+            //    ]
+
+            //});
+
+
+
+        });
+
+    </script>
+}

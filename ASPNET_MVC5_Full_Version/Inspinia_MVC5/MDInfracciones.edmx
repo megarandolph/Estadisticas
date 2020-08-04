@@ -1,0 +1,1316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InfraccionesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ZonaId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="80" />
+          <Property Name="Hora_Inicio" Type="time" Precision="7" />
+          <Property Name="Hora_Fin" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Comandancia">
+          <Key>
+            <PropertyRef Name="ComandanciaId" />
+          </Key>
+          <Property Name="ComandanciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionalId" Type="int" />
+          <Property Name="ProvinciaId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Condicion_implicado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento_Caso">
+          <Key>
+            <PropertyRef Name="Evento_CasoId" />
+          </Key>
+          <Property Name="Evento_CasoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Registro_EventoId" Type="int" />
+          <Property Name="EventoId" Type="int" />
+        </EntityType>
+        <EntityType Name="Implicado">
+          <Key>
+            <PropertyRef Name="Implicado_id" />
+          </Key>
+          <Property Name="Implicado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Registro_Evento_id" Type="int" />
+          <Property Name="Profesion_id" Type="int" />
+          <Property Name="Rango_id" Type="int" />
+          <Property Name="Condicion_implicado_id" Type="int" />
+          <Property Name="Nacionalidad" Type="int" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="100" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="1" />
+          <Property Name="Edad" Type="int" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="MunicipioId" />
+          </Key>
+          <Property Name="MunicipioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProvinciaId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Nacionalidad">
+          <Key>
+            <PropertyRef Name="Nacionalidad_id" />
+          </Key>
+          <Property Name="Nacionalidad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Profesion">
+          <Key>
+            <PropertyRef Name="Profesion_id" />
+          </Key>
+          <Property Name="Profesion_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="ProvinciaId" />
+          </Key>
+          <Property Name="ProvinciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Rango">
+          <Key>
+            <PropertyRef Name="Rango_id" />
+          </Key>
+          <Property Name="Rango_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Orden" Type="int" />
+        </EntityType>
+        <EntityType Name="Regional">
+          <Key>
+            <PropertyRef Name="RegionalId" />
+          </Key>
+          <Property Name="RegionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registro_Evento">
+          <Key>
+            <PropertyRef Name="Registro_EventoId" />
+          </Key>
+          <Property Name="Registro_EventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionalId" Type="int" />
+          <Property Name="ComandanciaId" Type="int" />
+          <Property Name="ZonaId" Type="int" />
+          <Property Name="MunicipioId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Tipo_InvolucradoId" Type="int" />
+          <Property Name="GeogCol1" Type="numeric" Precision="18" Scale="15" Nullable="false" />
+          <Property Name="GeogCol2" Type="numeric" Precision="18" Scale="15" Nullable="false" />
+          <Property Name="FechaReporte" Type="datetime" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Fiscalizado" Type="bit" />
+          <Property Name="Retenido" Type="bit" />
+          <Property Name="Comentario" Type="nvarchar(max)" />
+          <Property Name="Numero_Caso" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tipo_Involucrado">
+          <Key>
+            <PropertyRef Name="Tipo_InvolucradoId" />
+          </Key>
+          <Property Name="Tipo_InvolucradoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Flota" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComandanciaId" Type="int" />
+          <Property Name="Usuario1" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="idRol" Type="int" />
+        </EntityType>
+        <EntityType Name="Zona">
+          <Key>
+            <PropertyRef Name="ZonaId" />
+          </Key>
+          <Property Name="ZonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComandanciaId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Implicado__Condi__0A9D95DB">
+          <End Role="Condicion_implicado" Type="Self.Condicion_implicado" Multiplicity="0..1" />
+          <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Condicion_implicado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Condicion_implicado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Nacio__0B91BA14">
+          <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="0..1" />
+          <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="Nacionalidad_id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Nacionalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Profe__08B54D69">
+          <End Role="Profesion" Type="Self.Profesion" Multiplicity="0..1" />
+          <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesion">
+              <PropertyRef Name="Profesion_id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Profesion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Rango__09A971A2">
+          <End Role="Rango" Type="Self.Rango" Multiplicity="0..1" />
+          <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rango">
+              <PropertyRef Name="Rango_id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Rango_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Regis__07C12930">
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="0..1" />
+          <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registro_Evento">
+              <PropertyRef Name="Registro_EventoId" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Registro_Evento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__idRol__11158940">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Area_Zona">
+          <End Role="Zona" Type="Self.Zona" Multiplicity="0..1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zona">
+              <PropertyRef Name="ZonaId" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="ZonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comandancia_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Comandancia" Type="Self.Comandancia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ProvinciaId" />
+            </Principal>
+            <Dependent Role="Comandancia">
+              <PropertyRef Name="ProvinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comandancia_Regional">
+          <End Role="Regional" Type="Self.Regional" Multiplicity="0..1" />
+          <End Role="Comandancia" Type="Self.Comandancia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional">
+              <PropertyRef Name="RegionalId" />
+            </Principal>
+            <Dependent Role="Comandancia">
+              <PropertyRef Name="RegionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Caso_Evento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="0..1" />
+          <End Role="Evento_Caso" Type="Self.Evento_Caso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="Evento_Caso">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Caso_Registro_Evento">
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="0..1" />
+          <End Role="Evento_Caso" Type="Self.Evento_Caso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registro_Evento">
+              <PropertyRef Name="Registro_EventoId" />
+            </Principal>
+            <Dependent Role="Evento_Caso">
+              <PropertyRef Name="Registro_EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipio_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ProvinciaId" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="ProvinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Comandancia">
+          <End Role="Comandancia" Type="Self.Comandancia" Multiplicity="0..1" />
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comandancia">
+              <PropertyRef Name="ComandanciaId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="ComandanciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="MunicipioId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="MunicipioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Regional">
+          <End Role="Regional" Type="Self.Regional" Multiplicity="0..1" />
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional">
+              <PropertyRef Name="RegionalId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="RegionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Tipo_Involucrado">
+          <End Role="Tipo_Involucrado" Type="Self.Tipo_Involucrado" Multiplicity="0..1" />
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Involucrado">
+              <PropertyRef Name="Tipo_InvolucradoId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="Tipo_InvolucradoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Zona">
+          <End Role="Zona" Type="Self.Zona" Multiplicity="0..1" />
+          <End Role="Registro_Evento" Type="Self.Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zona">
+              <PropertyRef Name="ZonaId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="ZonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Comandancia">
+          <End Role="Comandancia" Type="Self.Comandancia" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comandancia">
+              <PropertyRef Name="ComandanciaId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ComandanciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zona_Comandancia">
+          <End Role="Comandancia" Type="Self.Comandancia" Multiplicity="0..1" />
+          <End Role="Zona" Type="Self.Zona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comandancia">
+              <PropertyRef Name="ComandanciaId" />
+            </Principal>
+            <Dependent Role="Zona">
+              <PropertyRef Name="ComandanciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Usp_Insert_Implicado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Registro_Evento_id" Type="int" Mode="In" />
+          <Parameter Name="Profesion_id" Type="int" Mode="In" />
+          <Parameter Name="Rango_id" Type="int" Mode="In" />
+          <Parameter Name="Condicion_implicado_id" Type="int" Mode="In" />
+          <Parameter Name="Nacionalidad" Type="int" Mode="In" />
+          <Parameter Name="Nombres" Type="varchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="varchar" Mode="In" />
+          <Parameter Name="Edad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Usp_Registra_Evento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RegionalId" Type="int" Mode="In" />
+          <Parameter Name="ComandanciaId" Type="int" Mode="In" />
+          <Parameter Name="ZonaId" Type="int" Mode="In" />
+          <Parameter Name="MunicipioId" Type="int" Mode="In" />
+          <Parameter Name="UsuarioId" Type="int" Mode="In" />
+          <Parameter Name="Tipo_InvolucradoId" Type="int" Mode="In" />
+          <Parameter Name="GeogCol1" Type="numeric" Mode="In" />
+          <Parameter Name="GeogCol2" Type="numeric" Mode="In" />
+          <Parameter Name="FechaReporte" Type="datetime" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Fiscalizado" Type="bit" Mode="In" />
+          <Parameter Name="Retenido" Type="bit" Mode="In" />
+          <Parameter Name="Comentario" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="InfraccionesDBModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comandancia" EntityType="Self.Comandancia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Condicion_implicado" EntityType="Self.Condicion_implicado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento_Caso" EntityType="Self.Evento_Caso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Implicado" EntityType="Self.Implicado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nacionalidad" EntityType="Self.Nacionalidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesion" EntityType="Self.Profesion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rango" EntityType="Self.Rango" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regional" EntityType="Self.Regional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registro_Evento" EntityType="Self.Registro_Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Involucrado" EntityType="Self.Tipo_Involucrado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zona" EntityType="Self.Zona" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Implicado__Condi__0A9D95DB" Association="Self.FK__Implicado__Condi__0A9D95DB">
+            <End Role="Condicion_implicado" EntitySet="Condicion_implicado" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Nacio__0B91BA14" Association="Self.FK__Implicado__Nacio__0B91BA14">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Profe__08B54D69" Association="Self.FK__Implicado__Profe__08B54D69">
+            <End Role="Profesion" EntitySet="Profesion" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Rango__09A971A2" Association="Self.FK__Implicado__Rango__09A971A2">
+            <End Role="Rango" EntitySet="Rango" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Regis__07C12930" Association="Self.FK__Implicado__Regis__07C12930">
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__idRol__11158940" Association="Self.FK__Usuario__idRol__11158940">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_Zona" Association="Self.FK_Area_Zona">
+            <End Role="Zona" EntitySet="Zona" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comandancia_Provincia" Association="Self.FK_Comandancia_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Comandancia" EntitySet="Comandancia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comandancia_Regional" Association="Self.FK_Comandancia_Regional">
+            <End Role="Regional" EntitySet="Regional" />
+            <End Role="Comandancia" EntitySet="Comandancia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Caso_Evento" Association="Self.FK_Evento_Caso_Evento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Evento_Caso" EntitySet="Evento_Caso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Caso_Registro_Evento" Association="Self.FK_Evento_Caso_Registro_Evento">
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+            <End Role="Evento_Caso" EntitySet="Evento_Caso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipio_Provincia" Association="Self.FK_Municipio_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Comandancia" Association="Self.FK_Registro_Evento_Comandancia">
+            <End Role="Comandancia" EntitySet="Comandancia" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Municipio" Association="Self.FK_Registro_Evento_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Regional" Association="Self.FK_Registro_Evento_Regional">
+            <End Role="Regional" EntitySet="Regional" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Tipo_Involucrado" Association="Self.FK_Registro_Evento_Tipo_Involucrado">
+            <End Role="Tipo_Involucrado" EntitySet="Tipo_Involucrado" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Usuario" Association="Self.FK_Registro_Evento_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Zona" Association="Self.FK_Registro_Evento_Zona">
+            <End Role="Zona" EntitySet="Zona" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Comandancia" Association="Self.FK_Usuario_Comandancia">
+            <End Role="Comandancia" EntitySet="Comandancia" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zona_Comandancia" Association="Self.FK_Zona_Comandancia">
+            <End Role="Comandancia" EntitySet="Comandancia" />
+            <End Role="Zona" EntitySet="Zona" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InfraccionesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZonaId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Hora_Inicio" Type="Time" Precision="7" />
+          <Property Name="Hora_Fin" Type="Time" Precision="7" />
+          <NavigationProperty Name="Zona" Relationship="Self.FK_Area_Zona" FromRole="Area" ToRole="Zona" />
+        </EntityType>
+        <EntityType Name="Comandancia">
+          <Key>
+            <PropertyRef Name="ComandanciaId" />
+          </Key>
+          <Property Name="ComandanciaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionalId" Type="Int32" />
+          <Property Name="ProvinciaId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Regional" Relationship="Self.FK_Comandancia_Regional" FromRole="Comandancia" ToRole="Regional" />
+          <NavigationProperty Name="Zona" Relationship="Self.FK_Zona_Comandancia" FromRole="Comandancia" ToRole="Zona" />
+          <NavigationProperty Name="Provincia" Relationship="InfraccionesDBModel.FK_Comandancia_Provincia" FromRole="Comandancia" ToRole="Provincia" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK_Registro_Evento_Comandancia" FromRole="Comandancia" ToRole="Registro_Evento" />
+          <NavigationProperty Name="Usuario" Relationship="InfraccionesDBModel.FK_Usuario_Comandancia" FromRole="Comandancia" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Evento_Caso" Relationship="Self.FK_Evento_Caso_Evento" FromRole="Evento" ToRole="Evento_Caso" />
+        </EntityType>
+        <EntityType Name="Evento_Caso">
+          <Key>
+            <PropertyRef Name="Evento_CasoId" />
+          </Key>
+          <Property Name="Evento_CasoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Registro_EventoId" Type="Int32" />
+          <Property Name="EventoId" Type="Int32" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK_Evento_Caso_Evento" FromRole="Evento_Caso" ToRole="Evento" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK_Evento_Caso_Registro_Evento" FromRole="Evento_Caso" ToRole="Registro_Evento" />
+        </EntityType>
+        <EntityType Name="Regional">
+          <Key>
+            <PropertyRef Name="RegionalId" />
+          </Key>
+          <Property Name="RegionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Comandancia" Relationship="Self.FK_Comandancia_Regional" FromRole="Regional" ToRole="Comandancia" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK_Registro_Evento_Regional" FromRole="Regional" ToRole="Registro_Evento" />
+        </EntityType>
+        <EntityType Name="Tipo_Involucrado">
+          <Key>
+            <PropertyRef Name="Tipo_InvolucradoId" />
+          </Key>
+          <Property Name="Tipo_InvolucradoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK_Registro_Evento_Tipo_Involucrado" FromRole="Tipo_Involucrado" ToRole="Registro_Evento" />
+        </EntityType>
+        <EntityType Name="Zona">
+          <Key>
+            <PropertyRef Name="ZonaId" />
+          </Key>
+          <Property Name="ZonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComandanciaId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Area_Zona" FromRole="Zona" ToRole="Area" />
+          <NavigationProperty Name="Comandancia" Relationship="Self.FK_Zona_Comandancia" FromRole="Zona" ToRole="Comandancia" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK_Registro_Evento_Zona" FromRole="Zona" ToRole="Registro_Evento" />
+        </EntityType>
+        <Association Name="FK_Area_Zona">
+          <End Role="Zona" Type="Self.Zona" Multiplicity="0..1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zona">
+              <PropertyRef Name="ZonaId" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="ZonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comandancia_Regional">
+          <End Role="Regional" Type="Self.Regional" Multiplicity="0..1" />
+          <End Role="Comandancia" Type="Self.Comandancia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional">
+              <PropertyRef Name="RegionalId" />
+            </Principal>
+            <Dependent Role="Comandancia">
+              <PropertyRef Name="RegionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zona_Comandancia">
+          <End Role="Comandancia" Type="Self.Comandancia" Multiplicity="0..1" />
+          <End Role="Zona" Type="Self.Zona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comandancia">
+              <PropertyRef Name="ComandanciaId" />
+            </Principal>
+            <Dependent Role="Zona">
+              <PropertyRef Name="ComandanciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Caso_Evento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="0..1" />
+          <End Role="Evento_Caso" Type="Self.Evento_Caso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="Evento_Caso">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InfraccionesDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="Comandancia" EntityType="Self.Comandancia" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" />
+          <EntitySet Name="Evento_Caso" EntityType="Self.Evento_Caso" />
+          <EntitySet Name="Regional" EntityType="Self.Regional" />
+          <EntitySet Name="Tipo_Involucrado" EntityType="Self.Tipo_Involucrado" />
+          <EntitySet Name="Zona" EntityType="Self.Zona" />
+          <AssociationSet Name="FK_Area_Zona" Association="Self.FK_Area_Zona">
+            <End Role="Zona" EntitySet="Zona" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comandancia_Regional" Association="Self.FK_Comandancia_Regional">
+            <End Role="Regional" EntitySet="Regional" />
+            <End Role="Comandancia" EntitySet="Comandancia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zona_Comandancia" Association="Self.FK_Zona_Comandancia">
+            <End Role="Comandancia" EntitySet="Comandancia" />
+            <End Role="Zona" EntitySet="Zona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Caso_Evento" Association="Self.FK_Evento_Caso_Evento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Evento_Caso" EntitySet="Evento_Caso" />
+          </AssociationSet>
+          <EntitySet Name="Provincia" EntityType="InfraccionesDBModel.Provincia" />
+          <AssociationSet Name="FK_Comandancia_Provincia" Association="InfraccionesDBModel.FK_Comandancia_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Comandancia" EntitySet="Comandancia" />
+          </AssociationSet>
+          <EntitySet Name="Municipio" EntityType="InfraccionesDBModel.Municipio" />
+          <AssociationSet Name="FK_Municipio_Provincia" Association="InfraccionesDBModel.FK_Municipio_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <EntitySet Name="Condicion_implicado" EntityType="InfraccionesDBModel.Condicion_implicado" />
+          <EntitySet Name="Implicado" EntityType="InfraccionesDBModel.Implicado" />
+          <EntitySet Name="Nacionalidad" EntityType="InfraccionesDBModel.Nacionalidad" />
+          <EntitySet Name="Profesion" EntityType="InfraccionesDBModel.Profesion" />
+          <EntitySet Name="Rango" EntityType="InfraccionesDBModel.Rango" />
+          <AssociationSet Name="FK__Implicado__Condi__0A9D95DB" Association="InfraccionesDBModel.FK__Implicado__Condi__0A9D95DB">
+            <End Role="Condicion_implicado" EntitySet="Condicion_implicado" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Nacio__0B91BA14" Association="InfraccionesDBModel.FK__Implicado__Nacio__0B91BA14">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Profe__08B54D69" Association="InfraccionesDBModel.FK__Implicado__Profe__08B54D69">
+            <End Role="Profesion" EntitySet="Profesion" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Rango__09A971A2" Association="InfraccionesDBModel.FK__Implicado__Rango__09A971A2">
+            <End Role="Rango" EntitySet="Rango" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <FunctionImport Name="Usp_Insert_Implicado">
+            <Parameter Name="Registro_Evento_id" Mode="In" Type="Int32" />
+            <Parameter Name="Profesion_id" Mode="In" Type="Int32" />
+            <Parameter Name="Rango_id" Mode="In" Type="Int32" />
+            <Parameter Name="Condicion_implicado_id" Mode="In" Type="Int32" />
+            <Parameter Name="Nacionalidad" Mode="In" Type="Int32" />
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Edad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Registra_Evento" ReturnType="Collection(String)">
+            <Parameter Name="RegionalId" Mode="In" Type="Int32" />
+            <Parameter Name="ComandanciaId" Mode="In" Type="Int32" />
+            <Parameter Name="ZonaId" Mode="In" Type="Int32" />
+            <Parameter Name="MunicipioId" Mode="In" Type="Int32" />
+            <Parameter Name="UsuarioId" Mode="In" Type="Int32" />
+            <Parameter Name="Tipo_InvolucradoId" Mode="In" Type="Int32" />
+            <Parameter Name="GeogCol1" Mode="In" Type="Decimal" />
+            <Parameter Name="GeogCol2" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaReporte" Mode="In" Type="DateTime" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Fiscalizado" Mode="In" Type="Boolean" />
+            <Parameter Name="Retenido" Mode="In" Type="Boolean" />
+            <Parameter Name="Comentario" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Registro_Evento" EntityType="InfraccionesDBModel.Registro_Evento" />
+          <AssociationSet Name="FK_Registro_Evento_Comandancia" Association="InfraccionesDBModel.FK_Registro_Evento_Comandancia">
+            <End Role="Comandancia" EntitySet="Comandancia" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Caso_Registro_Evento" Association="InfraccionesDBModel.FK_Evento_Caso_Registro_Evento">
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+            <End Role="Evento_Caso" EntitySet="Evento_Caso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Implicado__Regis__07C12930" Association="InfraccionesDBModel.FK__Implicado__Regis__07C12930">
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+            <End Role="Implicado" EntitySet="Implicado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Municipio" Association="InfraccionesDBModel.FK_Registro_Evento_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Regional" Association="InfraccionesDBModel.FK_Registro_Evento_Regional">
+            <End Role="Regional" EntitySet="Regional" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Tipo_Involucrado" Association="InfraccionesDBModel.FK_Registro_Evento_Tipo_Involucrado">
+            <End Role="Tipo_Involucrado" EntitySet="Tipo_Involucrado" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Zona" Association="InfraccionesDBModel.FK_Registro_Evento_Zona">
+            <End Role="Zona" EntitySet="Zona" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <EntitySet Name="Rol" EntityType="InfraccionesDBModel.Rol" />
+          <EntitySet Name="Usuario" EntityType="InfraccionesDBModel.Usuario" />
+          <AssociationSet Name="FK_Usuario_Comandancia" Association="InfraccionesDBModel.FK_Usuario_Comandancia">
+            <End Role="Comandancia" EntitySet="Comandancia" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_Evento_Usuario" Association="InfraccionesDBModel.FK_Registro_Evento_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Registro_Evento" EntitySet="Registro_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__idRol__11158940" Association="InfraccionesDBModel.FK__Usuario__idRol__11158940">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="ProvinciaId" />
+          </Key>
+          <Property Name="ProvinciaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comandancia" Relationship="InfraccionesDBModel.FK_Comandancia_Provincia" FromRole="Provincia" ToRole="Comandancia" />
+          <NavigationProperty Name="Municipio" Relationship="InfraccionesDBModel.FK_Municipio_Provincia" FromRole="Provincia" ToRole="Municipio" />
+        </EntityType>
+        <Association Name="FK_Comandancia_Provincia">
+          <End Type="InfraccionesDBModel.Provincia" Role="Provincia" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Comandancia" Role="Comandancia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ProvinciaId" />
+            </Principal>
+            <Dependent Role="Comandancia">
+              <PropertyRef Name="ProvinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="MunicipioId" />
+          </Key>
+          <Property Name="MunicipioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProvinciaId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Provincia" Relationship="InfraccionesDBModel.FK_Municipio_Provincia" FromRole="Municipio" ToRole="Provincia" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK_Registro_Evento_Municipio" FromRole="Municipio" ToRole="Registro_Evento" />
+        </EntityType>
+        <Association Name="FK_Municipio_Provincia">
+          <End Type="InfraccionesDBModel.Provincia" Role="Provincia" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Municipio" Role="Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ProvinciaId" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="ProvinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Condicion_implicado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Implicado" Relationship="InfraccionesDBModel.FK__Implicado__Condi__0A9D95DB" FromRole="Condicion_implicado" ToRole="Implicado" />
+        </EntityType>
+        <EntityType Name="Implicado">
+          <Key>
+            <PropertyRef Name="Implicado_id" />
+          </Key>
+          <Property Name="Implicado_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Registro_Evento_id" Type="Int32" />
+          <Property Name="Profesion_id" Type="Int32" />
+          <Property Name="Rango_id" Type="Int32" />
+          <Property Name="Condicion_implicado_id" Type="Int32" />
+          <Property Name="Nacionalidad" Type="Int32" />
+          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Edad" Type="Int32" />
+          <NavigationProperty Name="Condicion_implicado" Relationship="InfraccionesDBModel.FK__Implicado__Condi__0A9D95DB" FromRole="Implicado" ToRole="Condicion_implicado" />
+          <NavigationProperty Name="Nacionalidad1" Relationship="InfraccionesDBModel.FK__Implicado__Nacio__0B91BA14" FromRole="Implicado" ToRole="Nacionalidad" />
+          <NavigationProperty Name="Profesion" Relationship="InfraccionesDBModel.FK__Implicado__Profe__08B54D69" FromRole="Implicado" ToRole="Profesion" />
+          <NavigationProperty Name="Rango" Relationship="InfraccionesDBModel.FK__Implicado__Rango__09A971A2" FromRole="Implicado" ToRole="Rango" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK__Implicado__Regis__07C12930" FromRole="Implicado" ToRole="Registro_Evento" />
+        </EntityType>
+        <EntityType Name="Nacionalidad">
+          <Key>
+            <PropertyRef Name="Nacionalidad_id" />
+          </Key>
+          <Property Name="Nacionalidad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Implicado" Relationship="InfraccionesDBModel.FK__Implicado__Nacio__0B91BA14" FromRole="Nacionalidad" ToRole="Implicado" />
+        </EntityType>
+        <EntityType Name="Profesion">
+          <Key>
+            <PropertyRef Name="Profesion_id" />
+          </Key>
+          <Property Name="Profesion_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Implicado" Relationship="InfraccionesDBModel.FK__Implicado__Profe__08B54D69" FromRole="Profesion" ToRole="Implicado" />
+        </EntityType>
+        <EntityType Name="Rango">
+          <Key>
+            <PropertyRef Name="Rango_id" />
+          </Key>
+          <Property Name="Rango_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Orden" Type="Int32" />
+          <NavigationProperty Name="Implicado" Relationship="InfraccionesDBModel.FK__Implicado__Rango__09A971A2" FromRole="Rango" ToRole="Implicado" />
+        </EntityType>
+        <Association Name="FK__Implicado__Condi__0A9D95DB">
+          <End Type="InfraccionesDBModel.Condicion_implicado" Role="Condicion_implicado" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Implicado" Role="Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Condicion_implicado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Condicion_implicado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Nacio__0B91BA14">
+          <End Type="InfraccionesDBModel.Nacionalidad" Role="Nacionalidad" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Implicado" Role="Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="Nacionalidad_id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Nacionalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Profe__08B54D69">
+          <End Type="InfraccionesDBModel.Profesion" Role="Profesion" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Implicado" Role="Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesion">
+              <PropertyRef Name="Profesion_id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Profesion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Rango__09A971A2">
+          <End Type="InfraccionesDBModel.Rango" Role="Rango" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Implicado" Role="Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rango">
+              <PropertyRef Name="Rango_id" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Rango_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Registro_Evento">
+          <Key>
+            <PropertyRef Name="Registro_EventoId" />
+          </Key>
+          <Property Name="Registro_EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionalId" Type="Int32" />
+          <Property Name="ComandanciaId" Type="Int32" />
+          <Property Name="ZonaId" Type="Int32" />
+          <Property Name="MunicipioId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Tipo_InvolucradoId" Type="Int32" />
+          <Property Name="GeogCol1" Type="Decimal" Nullable="false" Precision="18" Scale="15" />
+          <Property Name="GeogCol2" Type="Decimal" Nullable="false" Precision="18" Scale="15" />
+          <Property Name="FechaReporte" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fiscalizado" Type="Boolean" />
+          <Property Name="Retenido" Type="Boolean" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Numero_Caso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comandancia" Relationship="InfraccionesDBModel.FK_Registro_Evento_Comandancia" FromRole="Registro_Evento" ToRole="Comandancia" />
+          <NavigationProperty Name="Evento_Caso" Relationship="InfraccionesDBModel.FK_Evento_Caso_Registro_Evento" FromRole="Registro_Evento" ToRole="Evento_Caso" />
+          <NavigationProperty Name="Implicado" Relationship="InfraccionesDBModel.FK__Implicado__Regis__07C12930" FromRole="Registro_Evento" ToRole="Implicado" />
+          <NavigationProperty Name="Municipio" Relationship="InfraccionesDBModel.FK_Registro_Evento_Municipio" FromRole="Registro_Evento" ToRole="Municipio" />
+          <NavigationProperty Name="Regional" Relationship="InfraccionesDBModel.FK_Registro_Evento_Regional" FromRole="Registro_Evento" ToRole="Regional" />
+          <NavigationProperty Name="Tipo_Involucrado" Relationship="InfraccionesDBModel.FK_Registro_Evento_Tipo_Involucrado" FromRole="Registro_Evento" ToRole="Tipo_Involucrado" />
+          <NavigationProperty Name="Zona" Relationship="InfraccionesDBModel.FK_Registro_Evento_Zona" FromRole="Registro_Evento" ToRole="Zona" />
+          <NavigationProperty Name="Usuario" Relationship="InfraccionesDBModel.FK_Registro_Evento_Usuario" FromRole="Registro_Evento" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_Registro_Evento_Comandancia">
+          <End Type="InfraccionesDBModel.Comandancia" Role="Comandancia" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comandancia">
+              <PropertyRef Name="ComandanciaId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="ComandanciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Caso_Registro_Evento">
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Evento_Caso" Role="Evento_Caso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registro_Evento">
+              <PropertyRef Name="Registro_EventoId" />
+            </Principal>
+            <Dependent Role="Evento_Caso">
+              <PropertyRef Name="Registro_EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Implicado__Regis__07C12930">
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Implicado" Role="Implicado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registro_Evento">
+              <PropertyRef Name="Registro_EventoId" />
+            </Principal>
+            <Dependent Role="Implicado">
+              <PropertyRef Name="Registro_Evento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Municipio">
+          <End Type="InfraccionesDBModel.Municipio" Role="Municipio" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="MunicipioId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="MunicipioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Regional">
+          <End Type="InfraccionesDBModel.Regional" Role="Regional" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional">
+              <PropertyRef Name="RegionalId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="RegionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Tipo_Involucrado">
+          <End Type="InfraccionesDBModel.Tipo_Involucrado" Role="Tipo_Involucrado" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Involucrado">
+              <PropertyRef Name="Tipo_InvolucradoId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="Tipo_InvolucradoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Zona">
+          <End Type="InfraccionesDBModel.Zona" Role="Zona" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zona">
+              <PropertyRef Name="ZonaId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="ZonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="InfraccionesDBModel.FK__Usuario__idRol__11158940" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Flota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ComandanciaId" Type="Int32" />
+          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="idRol" Type="Int32" />
+          <NavigationProperty Name="Comandancia" Relationship="InfraccionesDBModel.FK_Usuario_Comandancia" FromRole="Usuario" ToRole="Comandancia" />
+          <NavigationProperty Name="Registro_Evento" Relationship="InfraccionesDBModel.FK_Registro_Evento_Usuario" FromRole="Usuario" ToRole="Registro_Evento" />
+          <NavigationProperty Name="Rol" Relationship="InfraccionesDBModel.FK__Usuario__idRol__11158940" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_Usuario_Comandancia">
+          <End Type="InfraccionesDBModel.Comandancia" Role="Comandancia" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comandancia">
+              <PropertyRef Name="ComandanciaId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ComandanciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_Evento_Usuario">
+          <End Type="InfraccionesDBModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Registro_Evento" Role="Registro_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Registro_Evento">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__idRol__11158940">
+          <End Type="InfraccionesDBModel.Rol" Role="Rol" Multiplicity="0..1" />
+          <End Type="InfraccionesDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InfraccionesDBModelStoreContainer" CdmEntityContainer="InfraccionesDBEntities">
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="ZonaId" ColumnName="ZonaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Hora_Inicio" ColumnName="Hora_Inicio" />
+                <ScalarProperty Name="Hora_Fin" ColumnName="Hora_Fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comandancia">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Comandancia">
+              <MappingFragment StoreEntitySet="Comandancia">
+                <ScalarProperty Name="ComandanciaId" ColumnName="ComandanciaId" />
+                <ScalarProperty Name="RegionalId" ColumnName="RegionalId" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento_Caso">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Evento_Caso">
+              <MappingFragment StoreEntitySet="Evento_Caso">
+                <ScalarProperty Name="Evento_CasoId" ColumnName="Evento_CasoId" />
+                <ScalarProperty Name="Registro_EventoId" ColumnName="Registro_EventoId" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regional">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Regional">
+              <MappingFragment StoreEntitySet="Regional">
+                <ScalarProperty Name="RegionalId" ColumnName="RegionalId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Involucrado">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Tipo_Involucrado">
+              <MappingFragment StoreEntitySet="Tipo_Involucrado">
+                <ScalarProperty Name="Tipo_InvolucradoId" ColumnName="Tipo_InvolucradoId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zona">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Zona">
+              <MappingFragment StoreEntitySet="Zona">
+                <ScalarProperty Name="ZonaId" ColumnName="ZonaId" />
+                <ScalarProperty Name="ComandanciaId" ColumnName="ComandanciaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipio">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Condicion_implicado">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Condicion_implicado">
+              <MappingFragment StoreEntitySet="Condicion_implicado">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Implicado">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Implicado">
+              <MappingFragment StoreEntitySet="Implicado">
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Condicion_implicado_id" ColumnName="Condicion_implicado_id" />
+                <ScalarProperty Name="Rango_id" ColumnName="Rango_id" />
+                <ScalarProperty Name="Profesion_id" ColumnName="Profesion_id" />
+                <ScalarProperty Name="Registro_Evento_id" ColumnName="Registro_Evento_id" />
+                <ScalarProperty Name="Implicado_id" ColumnName="Implicado_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Implicado">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="InfraccionesDBModel.Store.Usp_Insert_Implicado">
+                  <ScalarProperty Name="Edad" ParameterName="Edad" />
+                  <ScalarProperty Name="Sexo" ParameterName="Sexo" />
+                  <ScalarProperty Name="Apellidos" ParameterName="Apellidos" />
+                  <ScalarProperty Name="Nombres" ParameterName="Nombres" />
+                  <ScalarProperty Name="Nacionalidad" ParameterName="Nacionalidad" />
+                  <ScalarProperty Name="Condicion_implicado_id" ParameterName="Condicion_implicado_id" />
+                  <ScalarProperty Name="Rango_id" ParameterName="Rango_id" />
+                  <ScalarProperty Name="Profesion_id" ParameterName="Profesion_id" />
+                  <ScalarProperty Name="Registro_Evento_id" ParameterName="Registro_Evento_id" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nacionalidad">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Nacionalidad">
+              <MappingFragment StoreEntitySet="Nacionalidad">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nacionalidad_id" ColumnName="Nacionalidad_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesion">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Profesion">
+              <MappingFragment StoreEntitySet="Profesion">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Profesion_id" ColumnName="Profesion_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rango">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Rango">
+              <MappingFragment StoreEntitySet="Rango">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Rango_id" ColumnName="Rango_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Usp_Insert_Implicado" FunctionName="InfraccionesDBModel.Store.Usp_Insert_Implicado" />
+          <FunctionImportMapping FunctionImportName="Usp_Registra_Evento" FunctionName="InfraccionesDBModel.Store.Usp_Registra_Evento" />
+          <EntitySetMapping Name="Registro_Evento">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Registro_Evento">
+              <MappingFragment StoreEntitySet="Registro_Evento">
+                <ScalarProperty Name="Numero_Caso" ColumnName="Numero_Caso" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Retenido" ColumnName="Retenido" />
+                <ScalarProperty Name="Fiscalizado" ColumnName="Fiscalizado" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaReporte" ColumnName="FechaReporte" />
+                <ScalarProperty Name="GeogCol2" ColumnName="GeogCol2" />
+                <ScalarProperty Name="GeogCol1" ColumnName="GeogCol1" />
+                <ScalarProperty Name="Tipo_InvolucradoId" ColumnName="Tipo_InvolucradoId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+                <ScalarProperty Name="ZonaId" ColumnName="ZonaId" />
+                <ScalarProperty Name="ComandanciaId" ColumnName="ComandanciaId" />
+                <ScalarProperty Name="RegionalId" ColumnName="RegionalId" />
+                <ScalarProperty Name="Registro_EventoId" ColumnName="Registro_EventoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="InfraccionesDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario1" />
+                <ScalarProperty Name="ComandanciaId" ColumnName="ComandanciaId" />
+                <ScalarProperty Name="Flota" ColumnName="Flota" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

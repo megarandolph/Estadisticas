@@ -1,0 +1,177 @@
+﻿@model Inspinia_MVC5.Registro_Evento
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Detalles</h2>
+        <ol class="breadcrumb">
+            
+            <li class="active">
+                
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Detalles Registro de Evento</h5>
+                </div>
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+                        <dt>
+                            Longitud
+                            @*@Html.DisplayNameFor(model => model.GeogCol1)*@
+                        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeogCol1)
+        </dd>
+
+        <dt>
+            Latitud
+            @*@Html.DisplayNameFor(model => model.GeogCol2)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeogCol2)
+        </dd>
+
+        <dt>
+            Fecha de Reporte
+            @*@Html.DisplayNameFor(model => model.FechaReporte)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaReporte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiscalizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiscalizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Retenido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Retenido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+        <dt>
+            Numero de Caso
+            @*@Html.DisplayNameFor(model => model.Numero_Caso)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Caso)
+        </dd>
+
+        <dt>
+            Comandancia
+            @*@Html.DisplayNameFor(model => model.Comandancia.Descripcion)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comandancia.Descripcion)
+        </dd>
+
+        <dt>
+            Municipio
+            @*@Html.DisplayNameFor(model => model.Municipio.Descripcion)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipio.Descripcion)
+        </dd>
+
+        <dt>
+            Regional
+            @*@Html.DisplayNameFor(model => model.Regional.Descripcion)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Regional.Descripcion)
+        </dd>
+
+        <dt>
+            Tipo de Involucrado
+            @*@Html.DisplayNameFor(model => model.Tipo_Involucrado.Descripcion)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Involucrado.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Nombre)
+        </dd>
+
+        <dt>
+            Zona
+            @*@Html.DisplayNameFor(model => model.Zona.Descripcion)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zona.Descripcion)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Editar", "Edit", new { id = Model.Registro_EventoId }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-white"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

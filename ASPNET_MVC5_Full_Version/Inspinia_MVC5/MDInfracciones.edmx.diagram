@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d7c3cec390d2412f95c0b0266076d374" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="InfraccionesDBModel.Area" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Comandancia" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Evento" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Evento_Caso" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Regional" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Tipo_Involucrado" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Zona" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Area_Zona" ManuallyRouted="false" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Comandancia_Regional" ManuallyRouted="false" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Zona_Comandancia" ManuallyRouted="false" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Evento_Caso_Evento" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Provincia" Width="1.5" PointX="3.375" PointY="0.875" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Comandancia_Provincia" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Municipio" Width="1.5" PointX="5.625" PointY="0.875" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Municipio_Provincia" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Condicion_implicado" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Implicado" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Nacionalidad" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Profesion" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Rango" Width="1.5" PointX="12.75" PointY="0.75" />
+        <AssociationConnector Association="InfraccionesDBModel.FK__Implicado__Condi__0A9D95DB" />
+        <AssociationConnector Association="InfraccionesDBModel.FK__Implicado__Nacio__0B91BA14" />
+        <AssociationConnector Association="InfraccionesDBModel.FK__Implicado__Profe__08B54D69" />
+        <AssociationConnector Association="InfraccionesDBModel.FK__Implicado__Rango__09A971A2" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Registro_Evento" Width="1.5" PointX="9.875" PointY="1.5" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Registro_Evento_Comandancia" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Evento_Caso_Registro_Evento" />
+        <AssociationConnector Association="InfraccionesDBModel.FK__Implicado__Regis__07C12930" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Registro_Evento_Municipio" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Registro_Evento_Regional" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Registro_Evento_Tipo_Involucrado" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Registro_Evento_Zona" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Rol" Width="1.5" PointX="12.375" PointY="3.875" />
+        <EntityTypeShape EntityType="InfraccionesDBModel.Usuario" Width="1.5" PointX="14.625" PointY="4.5" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Usuario_Comandancia" />
+        <AssociationConnector Association="InfraccionesDBModel.FK_Registro_Evento_Usuario" />
+        <AssociationConnector Association="InfraccionesDBModel.FK__Usuario__idRol__11158940" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
