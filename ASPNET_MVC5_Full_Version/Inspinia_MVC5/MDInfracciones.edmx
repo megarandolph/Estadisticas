@@ -162,7 +162,7 @@
           <Property Name="ComandanciaId" Type="int" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Implicado__Condi__0A9D95DB">
+        <Association Name="FK__Implicado__Condi__5AEE82B9">
           <End Role="Condicion_implicado" Type="Self.Condicion_implicado" Multiplicity="0..1" />
           <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,7 +174,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Implicado__Nacio__0B91BA14">
+        <Association Name="FK__Implicado__Nacio__5BE2A6F2">
           <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="0..1" />
           <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -186,7 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Implicado__Profe__08B54D69">
+        <Association Name="FK__Implicado__Profe__5CD6CB2B">
           <End Role="Profesion" Type="Self.Profesion" Multiplicity="0..1" />
           <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -198,7 +198,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Implicado__Rango__09A971A2">
+        <Association Name="FK__Implicado__Rango__5DCAEF64">
           <End Role="Rango" Type="Self.Rango" Multiplicity="0..1" />
           <End Role="Implicado" Type="Self.Implicado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +222,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__idRol__11158940">
+        <Association Name="FK__Usuario__idRol__66603565">
           <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -446,19 +446,19 @@
           <EntitySet Name="Tipo_Involucrado" EntityType="Self.Tipo_Involucrado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zona" EntityType="Self.Zona" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Implicado__Condi__0A9D95DB" Association="Self.FK__Implicado__Condi__0A9D95DB">
+          <AssociationSet Name="FK__Implicado__Condi__5AEE82B9" Association="Self.FK__Implicado__Condi__5AEE82B9">
             <End Role="Condicion_implicado" EntitySet="Condicion_implicado" />
             <End Role="Implicado" EntitySet="Implicado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Implicado__Nacio__0B91BA14" Association="Self.FK__Implicado__Nacio__0B91BA14">
+          <AssociationSet Name="FK__Implicado__Nacio__5BE2A6F2" Association="Self.FK__Implicado__Nacio__5BE2A6F2">
             <End Role="Nacionalidad" EntitySet="Nacionalidad" />
             <End Role="Implicado" EntitySet="Implicado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Implicado__Profe__08B54D69" Association="Self.FK__Implicado__Profe__08B54D69">
+          <AssociationSet Name="FK__Implicado__Profe__5CD6CB2B" Association="Self.FK__Implicado__Profe__5CD6CB2B">
             <End Role="Profesion" EntitySet="Profesion" />
             <End Role="Implicado" EntitySet="Implicado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Implicado__Rango__09A971A2" Association="Self.FK__Implicado__Rango__09A971A2">
+          <AssociationSet Name="FK__Implicado__Rango__5DCAEF64" Association="Self.FK__Implicado__Rango__5DCAEF64">
             <End Role="Rango" EntitySet="Rango" />
             <End Role="Implicado" EntitySet="Implicado" />
           </AssociationSet>
@@ -466,7 +466,7 @@
             <End Role="Registro_Evento" EntitySet="Registro_Evento" />
             <End Role="Implicado" EntitySet="Implicado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__idRol__11158940" Association="Self.FK__Usuario__idRol__11158940">
+          <AssociationSet Name="FK__Usuario__idRol__66603565" Association="Self.FK__Usuario__idRol__66603565">
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
